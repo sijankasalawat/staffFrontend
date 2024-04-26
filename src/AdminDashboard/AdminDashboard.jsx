@@ -92,7 +92,7 @@ const AdminDashboard = () => {
           <div className="h-full px-3 pb-4 overflow-y-auto bg- dark:bg-gray-800">
             <ul className="space-y-2 font-medium">
               <li>
-                <button onClick={() => handleContainerChange('dashboard')} className={` w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-gray-100 dark:hover:bg-gray-700 group ${activeContainer === 'dashboard' ? 'bg-purple-100 text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
+                <button onClick={() => handleContainerChange('dashboard')} className={` w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-[#e8e2fb] dark:hover:bg-gray-700 group ${activeContainer === 'dashboard' ? 'bg-[#e8e2fb] text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
                   <span className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#8D75F5] dark:group-hover:text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
   <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleContainerChange('allEmployees')} className={` w-[100%]  flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-gray-100 dark:hover:bg-gray-700 group ${activeContainer === 'allEmployees' ? 'bg-purple-100 text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
+                <button onClick={() => handleContainerChange('allEmployees')} className={` w-[100%]  flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-[#e8e2fb] dark:hover:bg-gray-700 group ${activeContainer === 'allEmployees' ? 'bg-[#e8e2fb] text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
                   <span className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#8D75F5] dark:group-hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                       <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleContainerChange('attendance')} className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-gray-100 dark:hover:bg-gray-700 group ${activeContainer === 'attendance' ? 'bg-purple-100 text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
+                <button onClick={() => handleContainerChange('attendance')} className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-[#e8e2fb]  dark:hover:bg-gray-700 group ${activeContainer === 'attendance' ? 'bg-[#e8e2fb] text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
                   <span className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#8D75F5] dark:group-hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                       <path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z" clip-rule="evenodd" />
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
         </aside>
 
         {/* Main Content */}
-        <div className="p-4 sm:ml-64 mt-[40px]">
+        <div className="p-4 sm:ml-64 mt-[50px]">
       
           {activeContainer === 'dashboard' && <Dashboard />}
           {activeContainer === 'allEmployees' && <AllEmployees />}

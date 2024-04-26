@@ -16,7 +16,7 @@ const Login = () => {
       <img src={Logo} alt="logo" className='h-20 w-20 mt-[15%]' />
     </div>
 
-    <div className='text-center text-3xl font-bold '>Welcome 👋 </div>
+    <div className='text-center text-2xl font-bold mt-3 '>Welcome to Staff Management System👋 </div>
     <div className='text-center'>Please login to your account</div>
     <div class="relative mt-10 min-w-[200px] h-10 mx-10">
       <div class="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
