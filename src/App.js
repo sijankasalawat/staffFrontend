@@ -29,12 +29,12 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* <Route element={<AdminRoutes />}> */}
+        <Route element={<AdminRoutes/>}>
           <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/all-employees" component={AllEmployees} />
           <Route path="/attendance" component={Attendence} />
-        {/* </Route> */}
+        </Route>
         <Route path="*" element={<h1>404 Page Not Found</h1>} />
 
 
