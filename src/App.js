@@ -8,6 +8,8 @@ import Login from "./Login/Login";
 import { ToastContainer } from "react-toastify";
 import AdminRoutes from "./AdminProtected/AdminRoutes";
 import 'react-toastify/dist/ReactToastify.css';
+import HrDashboard from "./HrDashboard/HrDashboard";
+import EmployeeDashboard from "./EmployeeDashboard/EmployeeDashboard";
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route element={<AdminRoutes/>}>
           <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/hrdashboard" element={<HrDashboard />} />
+          <Route path="/employeedashboard" element={<EmployeeDashboard />} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/all-employees" component={AllEmployees} />
           <Route path="/attendance" component={Attendence} />

@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from "../assets/images/logo.png";
 import Dashboard from './Dashboard';
 import AllEmployees from './AllEmployees';
 import Attendance from './Attendence';
 import CurrentDate from '../Component/CurrentDate';
-
+import { useNavigate } from 'react-router-dom';
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const [activeContainer, setActiveContainer] = useState('dashboard');
 
   const handleContainerChange = (containerName) => {
     setActiveContainer(containerName);
   };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user.role != 'admin'){
+      if(user.role === 'hr'){
+        navigate('/hrDashboard');
+    }else{
+      navigate('dashboard')
+    }
+  }
+  },[])
 
   return (
     <>
