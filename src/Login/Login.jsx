@@ -64,7 +64,7 @@ const Login = () => {
   }
   return (
     <div >
-      {/* <ParticlesComponent/> */}
+      <ParticlesComponent/>
       <div className='loginBodys  h-[100vh] w-[100%] flex justify-center items-center absolute'>
 
 

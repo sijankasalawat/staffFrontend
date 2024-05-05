@@ -34,4 +34,4 @@
 
 
   export const loginApi=(data)=>  Api.post("api/user/adminLogin",data);
-  export const createUserApi = (data)=> Api.post("/user/createNewUser",data);
+export const createUserApi = (data)=> Api.post("api/user/createNewUser",data);
