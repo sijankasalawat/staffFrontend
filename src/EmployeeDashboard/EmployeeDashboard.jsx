@@ -105,7 +105,7 @@ const AdminDashboard = () => {
           <div className="h-full px-3 pb-4 overflow-y-auto bg- dark:bg-gray-800">
             <ul className="space-y-2 font-medium">
               <li>
-                <button onClick={() => handleContainerChange('dashboard')} className={` w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-[#e8e2fb] dark:hover:bg-gray-700 group ${activeContainer === 'dashboard' ? 'bg-[#e8e2fb] text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
+                <button onClick={() => handleContainerChange('empdashboard')} className={` w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-[#e8e2fb] dark:hover:bg-gray-700 group ${activeContainer === 'dashboard' ? 'bg-[#e8e2fb] text-[#8D75F5] border-l-4 border-[#8D75F5]' : ''}`}>
                   <span className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#8D75F5] dark:group-hover:text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
   <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />

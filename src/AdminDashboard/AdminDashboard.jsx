@@ -39,13 +39,16 @@ const AdminDashboard = () => {
                 </button>
                 <div to="/" className="flex ms-2 md:me-24">
                   <img src={logo} className="h-8 me-3" alt="Logo" />
-                  <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Staff Management System</span>
+                  <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white lg:block md-block hidden">Staff Management System</span>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="flex items-center ms-3">
                   <div className='lg:flex gap-2'>
-                  <CurrentDate/>
+                    <div className='hidden lg:block'>
+                    <CurrentDate/>
+                    </div>
+              
                     <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                       <span className="sr-only">Open user menu</span>
                     

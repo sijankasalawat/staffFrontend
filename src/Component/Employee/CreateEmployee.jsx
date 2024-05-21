@@ -68,10 +68,6 @@ const CreateEmployee = ({ toggle, open }) => {
     const handelSubmit = (e) => {
         e.preventDefault();
         console.log('firstName: ', fName, 'lastName: ', lName, 'email: ', email, 'password: ', password, 'designation: ', designation, 'role: ', role, 'phoneNumber: ', phoneNumber, 'username: ', username);
-        if (!formData.fName || !formData.lName || !formData.email || !formData.password || !formData.designation || !formData.role || !formData.phoneNumber || !formData.username) {
-            toast.error("Frontend validation for field.");
-            return;
-        }
         
         
         const data = { fName, lName, email, password, designation, role, phoneNumber, username };
