@@ -68,7 +68,7 @@ const Login = () => {
       <div className='loginBodys  h-[100vh] w-[100%] flex justify-center items-center absolute'>
 
 
-        <div className='  lg:h-[80%] lg:w-[30%] md:w-[50%] md:h-[80%] h-[90%] sm:w-[90%]  flex justify-center  rounded-xl bg-[#cfc6fd]'>
+        <div className='  lg:h-[80%] lg:w-[30%] md:w-[50%] md:h-[80%] h-[90%] sm:w-[90%]  flex justify-center  rounded-xl bg-white shadow border-orange-400 border shadow-orange-500'>
           <div className='w-full'>
             <div className='flex justify-center w-full'>
               <img src={Logo} alt="logo" className='h-20 w-20 mt-[15%]' />
@@ -110,7 +110,7 @@ const Login = () => {
 
 
 
-              <button onClick={handelSubmit} className='btn bg-[#8D75F5] w-full px-10 rounded-xl mt-3 h-10 text-white hover:bg-purple-700'>Login</button>
+              <button onClick={handelSubmit} className='btn bg-orange-500 w-full px-10 rounded-xl mt-3 h-10 text-white hover:bg-purple-700'>Login</button>
 
             </div>
 

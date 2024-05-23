@@ -34,7 +34,7 @@ const ParticlesComponent = (props) => {
     () => ({
       background: {
         color: {
-          value: "#171717",
+          value: "#f7f7f7",
         },
       },
       fullScreen: {
@@ -65,14 +65,14 @@ const ParticlesComponent = (props) => {
       },
       particles: {
         color: {
-          value: "#8D75F5",
+          value: "#F39F52",
         },
         links: {
-          color: "#8D75F5",
+          color: "#F39F52",
           distance: 150,
           enable: true,
           opacity: 0.3,
-          width: 1,
+          width: 2,
         },
         move: {
           direction: "none",
@@ -97,7 +97,7 @@ const ParticlesComponent = (props) => {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: { min: 1, max: 5 },
         },
       },
       detectRetina: true,
