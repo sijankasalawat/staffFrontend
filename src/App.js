@@ -10,6 +10,7 @@ import AdminRoutes from "./AdminProtected/AdminRoutes";
 import 'react-toastify/dist/ReactToastify.css';
 import HrDashboard from "./HrDashboard/HrDashboard";
 import EmployeeDashboard from "./EmployeeDashboard/EmployeeDashboard";
+import Error404 from "./Component/Error404";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
           <Route path="/all-employees" component={AllEmployees} />
           <Route path="/attendance" component={Attendence} />
         </Route>
-        <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route path="*" element={<Error404/>} />
 
 
       </Routes>

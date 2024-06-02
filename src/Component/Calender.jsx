@@ -13,7 +13,7 @@ export default function BasicDateCalendar() {
         components={{
           day: ({ day, date }) => {
             const style = {
-              backgroundColor: isCurrentDate(date) ? '#8D75F5' : undefined,
+              backgroundColor: isCurrentDate(date) ? '#F97316' : undefined,
               color: isCurrentDate(date) || date.day() === 6 ? 'red' : undefined,
             };
             return (

@@ -1,5 +1,5 @@
 .css-1aqny2q-MuiPickersCalendarHeader-root {
-    background-color: #8D75F5;
+    background-color: #F97316;
     color:white;
 }
 .css-1rtg91x-MuiDateCalendar-root{
@@ -7,9 +7,9 @@
     border-radius: 5px;
 }
 .css-23p0if-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
-    background-color: #8D75F5;
+    background-color: #F97316;
     color: white;
-    border: 1px solid #8D75F5;}
+    border: 1px solid #F97316;}
 .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
-    background-color: #8D75F5;
+    background-color: #F97316;
 }
