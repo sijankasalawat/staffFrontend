@@ -58,13 +58,7 @@ const CreateEmployee = ({ toggle, open }) => {
         username: ""
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+   
     const handelSubmit = (e) => {
         e.preventDefault();
         console.log('firstName: ', fName, 'lastName: ', lName, 'email: ', email, 'password: ', password, 'designation: ', designation, 'role: ', role, 'phoneNumber: ', phoneNumber, 'username: ', username);

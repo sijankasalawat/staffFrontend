@@ -1,9 +1,13 @@
 import React from 'react'
 import BasicDateCalendar from '../Component/Calender'
+import AllEvents from '../Component/AllEvents'
+
 
 const Dashboard = () => {
   return (
     <>
+    <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2'>
+      <div className='lg:col-span-3'>
       <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-5 '>
         <div className='border rounded-xl p-5 '>
           <div className='flex gap-3'>
@@ -14,7 +18,7 @@ const Dashboard = () => {
 
           </div>
           <div className='text-3xl font-bold text-gray-600'>
-            33
+          {/* {totalUsers} */}
           </div>
         </div>
         <div className='border rounded-xl p-5 '>
@@ -58,9 +62,18 @@ const Dashboard = () => {
         </div>
 
       </div>
-      <div className='grid lg:grid-cols-4 gap-5 mt-3'>
+
+        </div>
+        <div className='border rounded-xl p-3 '>
+        <div className='text-xl font-bold text-gray-600 mb-2'> Today Date</div>
         <BasicDateCalendar />
+        <AllEvents/>
+        
       </div>
+        
+    </div>
+  
+      
 
     </>
   )

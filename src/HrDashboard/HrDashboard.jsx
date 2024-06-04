@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   };
 
   const navigate = useNavigate();
-  const [activeContainer, setActiveContainer] = useState('dashboard');
+  const [activeContainer, setActiveContainer] = useState('hrdashboard');
 
   const handleContainerChange = (containerName) => {
     setActiveContainer(containerName);

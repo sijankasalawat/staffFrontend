@@ -48,4 +48,7 @@ export const attendanceRecordApi = (userId, data) =>
 
 export const createEventApi = (data) =>
   Api.post("api/user/createEvent", data);
-export const getEventsApi = () => Api.get("api/user/getEvents");
+export const getAllEventsApi = () => Api.get("api/user/getAllEvents");
+export const deleteEventApi = (eventId) =>
+  Api.delete(`api/user/deleteEvent/${eventId}`);
+export const logoutUserApi =()=>Api.post("api/user/userLogout");
