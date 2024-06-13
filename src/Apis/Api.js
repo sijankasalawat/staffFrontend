@@ -34,6 +34,7 @@ const config = {
 
 export const loginApi = (data) => Api.post("api/user/adminLogin", data);
 export const createUserApi = (data) => Api.post("api/user/createNewUser", data);
+export const deleteUserApi = (userId) => Api.delete(`api/user/deleteUserById/${userId}`, userId);
 export const attendenceApi = (data) =>
   Api.post("api/user/employeeAttendance", data);
 export const getUserByIdApi = (userId) =>
@@ -45,6 +46,12 @@ export const updateAttendanceApi = (data) =>
   Api.post("api/user/updateAttendance", data);
 export const attendanceRecordApi = (userId, data) =>
   Api.get(`/api/user/attendanceRecord/${userId}`, data);
+
+export const getTotalPresentIdApi = (userId) => 
+ axios.get(`/api/user/getTotalPresentById/${userId}`);
+
+export const getTotalAbsentIdApi = (userId) =>
+  Api.get(`api/user/getTotalAbsentById/${userId}`);
 
 export const createEventApi = (data) =>
   Api.post("api/user/createEvent", data);
