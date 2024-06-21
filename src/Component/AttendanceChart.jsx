@@ -4,11 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const AttendanceChart = () => {
-  const totalPresent = 10; // Static value for present days
-  const totalAbsent = 2;   // Static value for absent days
-  const error = '';        // No error handling for static values
-
+const AttendanceChart = ({ totalPresent, totalAbsent }) => {
   const data = {
     labels: ['Present', 'Absent'],
     datasets: [
@@ -22,23 +18,19 @@ const AttendanceChart = () => {
   };
 
   const options = {
-    maintainAspectRatio: false, // Ensures chart isn't constrained to a fixed aspect ratio
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'bottom', // Adjust legend position as needed
+        position: 'bottom',
       },
     },
     responsive: true,
-    height: 250, // Set the height of the chart
+    height: 250,
   };
 
   return (
-    <div className='border rounded-xl p-5 h-[450px]' >
-      {error ? (
-        <div className='text-red-600'>{error}</div>
-      ) : (
-        <Doughnut data={data} options={options} />
-      )}
+    <div className='border rounded-xl p-5 h-[450px]'>
+      <Doughnut data={data} options={options} />
     </div>
   );
 };

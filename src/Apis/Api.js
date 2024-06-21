@@ -72,3 +72,6 @@ export const createTicketApi = (formData,userId) =>
   export const getTicketsByUserIdApi = (userId) =>
   Api.get(`api/user/getLeaveRequestsByUserId/${userId}`);
 
+  export const getAllRequestsApi = () => Api.get("api/user/getAllLeaveRequests");
+
+  export const updateRequestsApi = (userId) => Api.put(`api/user/leaveRequestUpdate/${userId}`);

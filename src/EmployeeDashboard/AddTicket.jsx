@@ -220,6 +220,9 @@ const AddTicket = () => {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+            <th scope="col" className="px-4 py-3">
+                S.N.
+              </th>
               <th scope="col" className="px-6 py-3">
                 Title
               </th>
@@ -241,11 +244,12 @@ const AddTicket = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(tickets) && tickets.length > 0 && tickets.map((ticket) => (
+            {Array.isArray(tickets) && tickets.length > 0 && tickets.map((ticket,index) => (
               <tr
                 key={ticket._id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
+                 <td className="px-4 py-4">{index + 1}</td>
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {ticket.title}
                   {/* {{...ticket}} */}

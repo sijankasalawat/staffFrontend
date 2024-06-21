@@ -11,6 +11,7 @@ import Profile from '../profile/Profile';
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [user,setUser]=useState(localStorage.getItem('user') || {})
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -22,8 +23,11 @@ const AdminDashboard = () => {
     setActiveContainer(containerName);
   };
   useEffect(() => {
+   
     const user = JSON.parse(localStorage.getItem('user'));
+    setUser(user);
     if(user.role != 'employee'){
+     
       if(user.role === 'hr'){
         navigate('/empdashboard');
     }else{
@@ -180,7 +184,7 @@ const AdminDashboard = () => {
         </aside>
         <div className="p-4 sm:ml-64">
           <div className=" pt-10 mt-3">
-          {activeContainer === 'empdashboard' && < EmpDashboard/>}
+          {activeContainer === 'empdashboard' && < EmpDashboard userId={user._id} />}
           {activeContainer === 'addticket' && <AddTicket />}
           {activeContainer === 'document' && <AddDocument />}
           {activeContainer === 'profilesetting' && <Profile/>}

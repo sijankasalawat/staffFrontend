@@ -1,44 +1,57 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import BasicDateCalendar from '../Component/Calender'
 import AllEvents from '../Component/AllEvents'
 import TotalPresent from '../Component/TotalPresent'
 import AttendanceChart from '../Component/AttendanceChart'
 import AttendanceBar from '../Component/AttendanceBar'
+import TotalAbsent from '../Component/TotalAbsent'
+import { getTotalAbsentIdApi, getTotalPresentIdApi } from '../Apis/Api'
 
 
 const HrDashboardMain = ({ userId }) => {
+  const [totalPresent, setTotalPresent] = useState(0);
+  const [totalAbsent, setTotalAbsent] = useState(0);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (userId) {
+     getTotalPresentIdApi(userId)
+        .then(response => {
+          if (response.data.success) {
+            setTotalPresent(response.data.totalPresent);
+          } else {
+            setError(response.data.message);
+          }
+        })
+        .catch(err => {
+          console.error('Error fetching total present days:', err);
+          setError('Error fetching total present days');
+        });
+
+    getTotalAbsentIdApi(userId)
+        .then(response => {
+          if (response.data.success) {
+            setTotalAbsent(response.data.totalAbsent);
+          } else {
+            setError(response.data.message);
+          }
+        })
+        .catch(err => {
+          console.error('Error fetching total absent days:', err);
+          setError('Error fetching total absent days');
+        });
+    } else {
+      setError('Invalid user ID');
+    }
+  }, [userId]);
   return (
     <>
     <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2'>
       <div className='lg:col-span-3'>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
         <TotalPresent userId={userId} />
-      <div className='border rounded-xl p-5 '>
-          <div className='flex gap-3'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" class="w-10 h-10 bg-orange-50 p-2 rounded">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-            </svg>
-
-            <div className='text-xl'>Total Present</div>
-
-          </div>
-          <div className='text-3xl font-bold text-gray-600'>
-            10
-          </div>
-        </div>
-        <div className='border rounded-xl p-5 '>
-          <div className='flex gap-3'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" class="w-10 h-10 bg-orange-50 p-2 rounded">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-            </svg>
-
-            <div className='text-xl'>Total Absent</div>
-
-          </div>
-          <div className='text-3xl font-bold text-gray-600'>
-            2
-          </div>
-        </div>
+     <TotalAbsent userId={userId} />
+  
        
         <div className='border rounded-xl p-5 '>
           <div className='flex gap-3'>
@@ -58,7 +71,13 @@ const HrDashboardMain = ({ userId }) => {
       </div>
       <div className='grid gap-3 lg:grid-cols-3 pt-3'>
      
-      <AttendanceChart/>
+     
+      {error ? (
+        <div className='text-red-600'>{error}</div>
+      ) : (
+        <AttendanceChart totalPresent={totalPresent} totalAbsent={totalAbsent} />
+      )}
+  
     
       <div className='lg:col-span-2'>
       <AttendanceBar/>  

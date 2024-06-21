@@ -7,6 +7,7 @@ import AttendenceCheck from './AttendenceCheck';
 import HrDocument from './HrDocument';
 import DropDown from '../Component/DropDown';
 import Profile from '../profile/Profile.jsx';
+import AttendanceRequest from './AttendanceRequest.jsx';
 
 const HrDashboard = () => { 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -143,6 +144,28 @@ const HrDashboard = () => {
               </li>
               <li>
                 <button 
+                  onClick={() => handleContainerChange('attendancerequest')} 
+                  className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-orange-100 dark:hover:bg-gray-700 group ${activeContainer === 'attendancerequest' ? 'bg-orange-100 text-[#F97316] border-l-4 border-[#F97316]' : ''}`}
+                >
+                  <span className={`w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#F97316] dark:group-hover:text-white`}>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor" 
+                      className={`w-6 h-6 ${activeContainer === 'attendancerequest' ? 'text-[#F97316]' : ''}`}
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M17.75 3a3.75 3.75 0 0 1 3.75 3.75v10.5A3.75 3.75 0 0 1 17.75 21H6.25A3.75 3.75 0 0 1 2.5 17.25V6.75A3.75 3.75 0 0 1 6.25 3h11.5Zm2.25 3.75a2.25 2.25 0 0 0-2.25-2.25H6.25a2.25 2.25 0 0 0-2.25 2.25v10.5c0 1.24 1.01 2.25 2.25 2.25h11.5a2.25 2.25 0 0 0 2.25-2.25V6.75Zm-13 7.5a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75Zm.75-3a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Zm-.75-3a.75.75 0 0 1 .75-.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1-.75-.75Z" 
+                        clipRule="evenodd" 
+                      />
+                    </svg>
+                  </span>
+                  <div className={`ms-3 ${activeContainer === 'attendancerequest' ? 'text-[#F97316]' : ''}`}>Attendance Request</div>
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => handleContainerChange('hrdocument')} 
                   className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-orange-100 dark:hover:bg-gray-700 group ${activeContainer === 'hrdocument' ? 'bg-orange-100 text-[#F97316] border-l-4 border-[#F97316]' : ''}`}
                 >
@@ -184,6 +207,7 @@ const HrDashboard = () => {
           <div className=" pt-10 mt-3">
             {activeContainer === 'hrdashboard' && <HrDashboardMain userId={user._id} />}
             {activeContainer === 'attendencecheck' && <AttendenceCheck />}
+            {activeContainer === 'attendancerequest' && <AttendanceRequest />}
             {activeContainer === 'hrdocument' && <HrDocument />}
             {activeContainer === 'profilesetting' && <Profile/>}
           </div>
