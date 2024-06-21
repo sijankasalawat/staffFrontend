@@ -59,3 +59,12 @@ export const getAllEventsApi = () => Api.get("api/user/getAllEvents");
 export const deleteEventApi = (eventId) =>
   Api.delete(`api/user/deleteEvent/${eventId}`);
 export const logoutUserApi =()=>Api.post("api/user/userLogout");
+
+
+//ticket leave request
+export const createTicketApi = (formData,userId) =>
+  Api.post(`api/user/createLeaveRequest/${userId}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data' // Ensure correct content type for FormData
+    }
+  });

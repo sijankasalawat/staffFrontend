@@ -34,12 +34,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route element={<AdminRoutes/>}>
           <Route path="/admindashboard" element={<AdminDashboard />} />
-          <Route path="/hrdashboard" element={<HrDashboard />} />
           <Route path="/employeedashboard" element={<EmployeeDashboard />} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/all-employees" component={AllEmployees} />
           <Route path="/attendance" component={Attendence} />
         </Route>
+        <Route path="/hrdashboard" element={<HrDashboard />} />
+
         <Route path="*" element={<Error404/>} />
 
 
