@@ -6,6 +6,7 @@ const TotalPresent = ({ userId }) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    console.log('userId: ', userId);
     if (userId) {
       console.log(`Using user ID: ${userId}`); // Log the user ID
       getTotalPresentIdApi(userId)

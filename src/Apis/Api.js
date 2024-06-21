@@ -48,7 +48,7 @@ export const attendanceRecordApi = (userId, data) =>
   Api.get(`/api/user/attendanceRecord/${userId}`, data);
 
 export const getTotalPresentIdApi = (userId) => 
- axios.get(`/api/user/getTotalPresentById/${userId}`);
+ Api.get(`/api/user/getTotalPresentById/${userId}`);
 
 export const getTotalAbsentIdApi = (userId) =>
   Api.get(`api/user/getTotalAbsentById/${userId}`);
@@ -68,3 +68,7 @@ export const createTicketApi = (formData,userId) =>
       'Content-Type': 'multipart/form-data' // Ensure correct content type for FormData
     }
   });
+
+  export const getTicketsByUserIdApi = (userId) =>
+  Api.get(`api/user/getLeaveRequestsByUserId/${userId}`);
+

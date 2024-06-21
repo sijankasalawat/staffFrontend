@@ -1,8 +1,8 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
+import { ShieldExclamationIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { toast } from 'react-toastify';
-import { createTicketApi } from '../Apis/Api';
+import { createTicketApi, getTicketsByUserIdApi } from '../Apis/Api';
 
 const AddTicket = () => {
   const [open, setOpen] = useState(false);
@@ -14,6 +14,30 @@ const AddTicket = () => {
   const [error, setError] = useState('');
   const [productImage, setProductImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [tickets, setTickets] = useState([]);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [imageModalSrc, setImageModalSrc] = useState(null);
+
+  const userId = JSON.parse(localStorage.getItem('user'))._id;
+
+  useEffect(() => {
+    const fetchTickets = async () => {
+      try {
+        const res = await getTicketsByUserIdApi(userId);
+        if (res.data.success && Array.isArray(res.data.leaveRequests)) {
+          setTickets(res.data.leaveRequests);
+        } else {
+          console.error('API response does not contain an array:', res.data);
+          toast.error('An error occurred while fetching tickets.');
+        }
+      } catch (error) {
+        console.error('Error fetching tickets:', error);
+        toast.error('An error occurred while fetching tickets.');
+      }
+    };
+
+    fetchTickets();
+  }, [userId]);
 
   const handleImage = (event) => {
     const file = event.target.files[0];
@@ -30,17 +54,15 @@ const AddTicket = () => {
     }
 
     const formData = new FormData();
-    const userId = JSON.parse(localStorage.getItem('user'))._id; // Fetch user ID from localStorage
     formData.append('userId', userId);
     formData.append('title', title);
     formData.append('reason', reason);
-    formData.append('fromDate', startDate); // Adjusted fromDate to match server expectation
-    formData.append('toDate', endDate); // Adjusted toDate to match server expectation
-    formData.append('file', productImage); // Append the file directly
+    formData.append('fromDate', startDate);
+    formData.append('toDate', endDate);
+    formData.append('file', productImage);
 
     try {
-      const res = await createTicketApi(formData, userId); // Pass formData and userId to API function
-      console.log('API response:', res);
+      const res = await createTicketApi(formData, userId);
       if (res.data && res.data.success) {
         setOpen(false);
         setTitle('');
@@ -50,6 +72,7 @@ const AddTicket = () => {
         setProductImage(null);
         setPreviewImage(null);
         toast.success(res.data.message);
+        setTickets((prevTickets) => [ res.data.leaveRequest, ...prevTickets,]);
       } else {
         setError(res.data.message || 'Failed to create leave request');
         toast.error(res.data.message || 'Failed to create leave request');
@@ -58,6 +81,11 @@ const AddTicket = () => {
       console.error('API error:', error);
       toast.error('An error occurred while creating the leave request.');
     }
+  };
+
+  const openImageModal = (src) => {
+    setImageModalSrc(src);
+    setImageModalOpen(true);
   };
 
   return (
@@ -158,15 +186,15 @@ const AddTicket = () => {
                           {(previewImage || productImage) && (
                             <img
                               src={previewImage || URL.createObjectURL(productImage)}
-                              className="mt-2 w-full h-40 object-contain"
                               alt="Preview"
+                              className="mt-3 w-full rounded-md"
                             />
                           )}
-                          {error && <p className="text-red-500 mt-2">{error}</p>}
-                          <div className="mt-4 flex justify-end">
+                          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+                          <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                             <button
                               type="button"
-                              className="inline-flex justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                              className="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:ml-3 sm:w-auto"
                               onClick={() => setOpen(false)}
                             >
                               Cancel
@@ -188,6 +216,113 @@ const AddTicket = () => {
           </Dialog>
         </Transition.Root>
       </div>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl mt-3">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Reason
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Start Date
+              </th>
+              <th scope="col" className="px-6 py-3">
+                End Date
+              </th>
+              <th scope="col" className="px-6 py-3">
+                File
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {Array.isArray(tickets) && tickets.length > 0 && tickets.map((ticket) => (
+              <tr
+                key={ticket._id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {ticket.title}
+                  {/* {{...ticket}} */}
+                </td>
+                <td className="px-6 py-4">{ticket.reason}</td>
+                <td className="px-6 py-4">{ticket.fromDate}</td>
+                <td className="px-6 py-4">{ticket.toDate}</td>
+                <td className="px-6 py-4">
+                  <button
+                    onClick={() => openImageModal(ticket.fileUrl)}
+                    className="text-blue-500"
+                  >
+                    View File
+                  </button>
+                </td>
+                <td className="px-6 py-4">{ticket.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {imageModalOpen && (
+        <Transition.Root show={imageModalOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={setImageModalOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 z-10 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                  enterTo="opacity-100 translate-y-0 sm:scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                  leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                >
+                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                    <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                      <div className="sm:flex sm:items-start">
+                        <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                          <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+                            Image Preview
+                          </Dialog.Title>
+                          <div className="mt-2">
+                            <img src={imageModalSrc} alt="Preview" className="w-full h-full object-cover rounded-md" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <button
+                        type="button"
+                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        onClick={() => setImageModalOpen(false)}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition.Root>
+      )}
     </>
   );
 };

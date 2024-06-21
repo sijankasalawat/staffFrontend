@@ -8,8 +8,9 @@ import HrDocument from './HrDocument';
 import DropDown from '../Component/DropDown';
 import Profile from '../profile/Profile.jsx';
 
-const AdminDashboard = () => { 
+const HrDashboard = () => { 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [user,setUser]=useState(localStorage.getItem('user') || {})
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -21,8 +22,10 @@ const AdminDashboard = () => {
     setActiveContainer(containerName);
   };
 
+  
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
+    setUser(user);
     if (user.role !== 'hr') {
       if (user.role === 'employee') {
         navigate('/employeeDashboard');
@@ -179,7 +182,7 @@ const AdminDashboard = () => {
         </aside>
         <div className="p-4 sm:ml-64">
           <div className=" pt-10 mt-3">
-            {activeContainer === 'hrdashboard' && <HrDashboardMain />}
+            {activeContainer === 'hrdashboard' && <HrDashboardMain userId={user._id} />}
             {activeContainer === 'attendencecheck' && <AttendenceCheck />}
             {activeContainer === 'hrdocument' && <HrDocument />}
             {activeContainer === 'profilesetting' && <Profile/>}
@@ -190,4 +193,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default HrDashboard;

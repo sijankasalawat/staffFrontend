@@ -12,6 +12,7 @@ const HrDashboardMain = ({ userId }) => {
     <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2'>
       <div className='lg:col-span-3'>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
+        <TotalPresent userId={userId} />
       <div className='border rounded-xl p-5 '>
           <div className='flex gap-3'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#F97316" class="w-10 h-10 bg-orange-50 p-2 rounded">
