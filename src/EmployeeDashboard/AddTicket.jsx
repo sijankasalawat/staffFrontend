@@ -90,6 +90,8 @@ const AddTicket = () => {
 
   return (
     <>
+       <div className="p-4">
+       <div className=" pt-10 mt-3">
       <div>
         <div className='text-[#F97316] font-bold text-3xl'>Add Leave Request</div>
         <div className='text-gray-600'>Add Your Leave Requests</div>
@@ -98,7 +100,7 @@ const AddTicket = () => {
           className='btn p-2 px-4 bg-[#F97316] text-white rounded-md font-bold hover:bg-orange-400'
           onClick={() => setOpen(true)}
         >
-          Add Ticket
+          Add Leave Request
         </button>
 
         <Transition.Root show={open} as={Fragment}>
@@ -327,6 +329,8 @@ const AddTicket = () => {
           </Dialog>
         </Transition.Root>
       )}
+      </div>
+      </div>
     </>
   );
 };

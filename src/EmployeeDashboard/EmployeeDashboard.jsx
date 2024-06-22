@@ -182,14 +182,14 @@ const AdminDashboard = () => {
             </ul>
           </div>
         </aside>
-        <div className="p-4 sm:ml-64">
-          <div className=" pt-10 mt-3">
+        <div className="sm:ml-64">
+         
           {activeContainer === 'empdashboard' && < EmpDashboard userId={user._id} />}
           {activeContainer === 'addticket' && <AddTicket />}
           {activeContainer === 'document' && <AddDocument />}
           {activeContainer === 'profilesetting' && <Profile/>}
           </div>
-        </div>
+      
       </div>
     </>
   );
