@@ -12,6 +12,8 @@ import AddEvent from './AddEvent.jsx';
 
 const AdminDashboard = () => { 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [user,setUser]=useState(localStorage.getItem('user') || {})
+
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -25,6 +27,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
+    setUser(user);
     if (user.role !== 'hr') {
       if (user.role === 'employee') {
         navigate('/employeeDashboard');
@@ -195,15 +198,15 @@ const AdminDashboard = () => {
             </ul>
           </div>
         </aside>
-        <div className="p-4 sm:ml-64">
-          <div className=" pt-10 mt-3">
+        <div className="sm:ml-64">
+          
           {activeContainer === 'dashboard' && <Dashboard />}
           {activeContainer === 'allEmployees' && <AllEmployees />}
           {activeContainer === 'attendance' && <Attendance/>}
-            {activeContainer === 'profilesetting' && <Profile/>}
+            {activeContainer === 'profilesetting' && <Profile userId={user._id} />}
             {activeContainer === 'addevent' && <AddEvent/>}
 
-          </div>
+         
         </div>
       </div>
     </>

@@ -48,6 +48,8 @@ const AttendanceRequest = () => {
 
   return (
     <>
+     <div className="p-4">
+     <div className=" pt-10 mt-3">
       <div className='text-[#F97316] font-bold text-3xl'>Attendance Request</div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl mt-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -139,6 +141,8 @@ const AttendanceRequest = () => {
             )}
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </>
   );

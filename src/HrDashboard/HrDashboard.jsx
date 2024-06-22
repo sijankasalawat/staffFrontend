@@ -203,14 +203,14 @@ const HrDashboard = () => {
             </ul>
           </div>
         </aside>
-        <div className="p-4 sm:ml-64">
-          <div className=" pt-10 mt-3">
+        <div className="sm:ml-64">
+         
             {activeContainer === 'hrdashboard' && <HrDashboardMain userId={user._id} />}
             {activeContainer === 'attendencecheck' && <AttendenceCheck />}
             {activeContainer === 'attendancerequest' && <AttendanceRequest />}
             {activeContainer === 'hrdocument' && <HrDocument />}
-            {activeContainer === 'profilesetting' && <Profile/>}
-          </div>
+            {activeContainer === 'profilesetting' && <Profile  userId={user._id}/>}
+       
         </div>
       </div>
     </>

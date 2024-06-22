@@ -46,6 +46,8 @@ const HrDashboardMain = ({ userId }) => {
   }, [userId]);
   return (
     <>
+    <div className="p-4">
+    <div className=" pt-10 mt-3">
     <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2'>
       <div className='lg:col-span-3'>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-5 '>
@@ -91,6 +93,8 @@ const HrDashboardMain = ({ userId }) => {
         
       </div>
         
+    </div>
+    </div>
     </div>
   
       

@@ -187,7 +187,7 @@ const AdminDashboard = () => {
           {activeContainer === 'empdashboard' && < EmpDashboard userId={user._id} />}
           {activeContainer === 'addticket' && <AddTicket />}
           {activeContainer === 'document' && <AddDocument />}
-          {activeContainer === 'profilesetting' && <Profile/>}
+          {activeContainer === 'profilesetting' && <Profile userId={user._id} />}
           </div>
       
       </div>

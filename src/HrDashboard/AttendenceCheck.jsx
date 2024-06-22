@@ -88,6 +88,8 @@ const AttendanceCheck = () => {
 
   return (
     <>
+     <div className="p-4">
+     <div className=" pt-10 mt-3">
       <div className='text-[#F97316] font-bold text-3xl'>Attendance</div>
       <div className='text-gray-600'>All Employees Attendance</div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl mt-3">
@@ -141,6 +143,8 @@ const AttendanceCheck = () => {
             {updateMode ? 'Update Attendance' : 'Save Attendance'}
           </button>
         </div>
+      </div>
+      </div>
       </div>
     </>
   );

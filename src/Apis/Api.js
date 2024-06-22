@@ -39,6 +39,7 @@ export const attendenceApi = (data) =>
   Api.post("api/user/employeeAttendance", data);
 export const getUserByIdApi = (userId) =>
   Api.get(`api/user/getUserById/${userId}`);
+export const updateUserApi = (data, userId) => Api.put(`api/user/updateUser/${userId}`, data);
 export const getAllUsersApi = () => Api.get("api/user/getAllUsers");
 export const markAttendanceApi = (data) =>
   Api.post("api/user/markAttendance", data);

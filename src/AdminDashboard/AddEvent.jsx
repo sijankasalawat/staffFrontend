@@ -76,6 +76,8 @@ const AddEvent = () => {
 
   return (
     <>
+     <div className="p-4">
+     <div className=" pt-10 mt-3">
       <div className='text-[#F97316] font-bold text-3xl'>Add Event</div>
       <div className='text-gray-600'>Add Upcoming Events</div>
       <button className='bg-[#F97316] px-3 p-2 text-white rounded-md mt-3' onClick={() => setOpen(true)}>Add Event</button>
@@ -190,7 +192,8 @@ const AddEvent = () => {
       <div className='all-event'>
       <EventList/>
       </div>
-
+</div>
+</div>
     </>
   );
 };

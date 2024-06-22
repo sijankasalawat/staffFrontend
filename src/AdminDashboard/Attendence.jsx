@@ -47,6 +47,8 @@ const Attendence = () => {
 
   return (
     <>
+     <div className="p-4">
+     <div className=" pt-10 mt-3">
       <div>Today's Attendance:</div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl mt-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -83,6 +85,8 @@ const Attendence = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      </div>
       </div>
     </>
   );
