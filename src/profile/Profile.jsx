@@ -5,7 +5,9 @@ import bg from "../assets/images/bg.png";
 import { toast } from "react-toastify";
 import { getUserByIdApi,updateUserApi } from "../Apis/Api";
 
-const Profile = ({ userId }) => {
+const Profile = () => {
+  const [userId, setUserId]= useState(JSON.parse(localStorage.getItem('user'))._id);
+
   console.log('userId: ', userId);
   const fileInputRef = useRef(null);
 
@@ -72,7 +74,7 @@ const Profile = ({ userId }) => {
       }
   
       // Call your updateUserApi with formData
-      const res = await updateUserApi(formData);
+      const res = await updateUserApi(formData,userId);
   
       // Assuming your API response has a success message
       if (res.data.success) {

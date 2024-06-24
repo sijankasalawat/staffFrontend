@@ -24,7 +24,7 @@ export default function DropDown() {
         localStorage.clear();
 
         // Redirect to login page or home page
-        navigate('/login'); // Updated to use navigate
+        navigate('/'); // Updated to use navigate
       } else {
         toast.error('Failed to log out');
       }

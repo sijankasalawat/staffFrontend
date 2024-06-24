@@ -31,7 +31,7 @@ function App() {
       {/* Same as */}
       <ToastContainer />
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route element={<AdminRoutes/>}>
           <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/employeedashboard" element={<EmployeeDashboard />} />

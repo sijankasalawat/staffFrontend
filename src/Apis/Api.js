@@ -39,7 +39,7 @@ export const attendenceApi = (data) =>
   Api.post("api/user/employeeAttendance", data);
 export const getUserByIdApi = (userId) =>
   Api.get(`api/user/getUserById/${userId}`);
-export const updateUserApi = (data, userId) => Api.put(`api/user/updateUser/${userId}`, data);
+export const updateUserApi = (data, userId) => Api.put(`api/user/updateUserById/${userId}`, data);
 export const getAllUsersApi = () => Api.get("api/user/getAllUsers");
 export const markAttendanceApi = (data) =>
   Api.post("api/user/markAttendance", data);
@@ -76,3 +76,5 @@ export const createTicketApi = (formData,userId) =>
   export const getAllRequestsApi = () => Api.get("api/user/getAllLeaveRequests");
 
   export const updateRequestsApi = (userId) => Api.put(`api/user/leaveRequestUpdate/${userId}`);
+
+  export const forgotPasswordApi = (data) =>Api.post("/api/user/forgot/password", data);
