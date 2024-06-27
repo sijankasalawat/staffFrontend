@@ -101,7 +101,7 @@ const Profile = () => {
                 <div className='flex justify-center mt-5'>
                   <div className="profile-image w-30 flex justify-center" onClick={handleImageClick}>
                   <img
-  src={user.avatar instanceof Blob ? URL.createObjectURL(user.avatar) : placeholderAvatar}
+  src={user.avatar || placeholderAvatar}
   className="w-[200px] h-[200px] object-contain rounded-full"
   alt="User Profile"
   onError={(e) => console.error("Image loading error", e)}

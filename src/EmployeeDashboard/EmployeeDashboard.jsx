@@ -5,7 +5,7 @@ import CurrentDate from '../Component/CurrentDate';
 import { useNavigate } from 'react-router-dom';
 import EmpDashboard from './EmpDashboard';
 import AddTicket from './AddTicket';
-import AddDocument from './AddDocument';
+import AddDocument from '../Component/AddDocument/AddDocument';
 import DropDown from '../Component/DropDown';
 import Profile from '../profile/Profile';
 
