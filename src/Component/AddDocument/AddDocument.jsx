@@ -46,7 +46,10 @@ const AddDocument = () => {
       <div className="pt-10 mt-3">
         <div className="text-[#F97316] font-bold text-3xl">Add Document</div>
         <div className="text-orange-600">Add Your Personal Document</div>
-        <form onSubmit={handleSubmit} className="grid lg:col-span-2 md:col-span-2 col-span-1 sm:col-span-2 gap-3 mb-5 w-full">
+        <form onSubmit={handleSubmit} className="gaP-3 mb-5 w-full">
+          <div className='grid lg:grid-cols-2 gap-3 mb-3'>
+
+        
           <div> 
             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Document Name</label>
             <input
@@ -70,6 +73,7 @@ const AddDocument = () => {
               placeholder="Description"
               required
             />
+          </div>
           </div>
           <div className="border p-1 border-orange-500 rounded-md">
             <div className="flex items-center justify-center w-full">
