@@ -8,6 +8,7 @@ import AddTicket from './AddTicket';
 import AddDocument from '../Component/AddDocument/AddDocument';
 import DropDown from '../Component/DropDown';
 import Profile from '../profile/Profile';
+import Project from '../Component/Project/Project';
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -166,6 +167,20 @@ const AdminDashboard = () => {
                 </button>
               </li>
               <li>
+  <button 
+    onClick={() => handleContainerChange('project')} 
+    className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-orange-100 dark:hover:bg-gray-700 group ${activeContainer === 'project' ? 'bg-orange-100 text-[#F97316] border-l-4 border-[#F97316]' : ''}`}
+  >
+    <span className={`w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-[#F97316] dark:group-hover:text-white`}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-6 h-6 ${activeContainer === 'project' ? 'text-[#F97316]' : ''}`}>
+        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+      </svg>
+    </span>
+    <div className={`ms-3 ${activeContainer === 'project' ? 'text-[#F97316]' : ''}`}>Project</div>
+  </button>
+</li>
+
+              <li>
                 <button 
                   onClick={() => handleContainerChange('profilesetting')} 
                   className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-orange-100 dark:hover:bg-gray-700 group ${activeContainer === 'profilesetting' ? 'bg-orange-100 text-[#F97316] border-l-4 border-[#F97316]' : ''}`}
@@ -179,6 +194,7 @@ const AdminDashboard = () => {
                   <div className={`ms-3 ${activeContainer === 'profilesetting' ? 'text-[#F97316]' : ''}`}>Profile Setting</div>
                 </button>
               </li>
+            
             </ul>
           </div>
         </aside>
@@ -186,7 +202,8 @@ const AdminDashboard = () => {
          
           {activeContainer === 'empdashboard' && < EmpDashboard userId={user._id} />}
           {activeContainer === 'addticket' && <AddTicket />}
-          {activeContainer === 'document' && <AddDocument />}
+          {activeContainer === 'document' && <AddDocument userId={user._id}/>}
+          {activeContainer === 'project' && <Project/>}
           {activeContainer === 'profilesetting' && <Profile userId={user._id} />}
           </div>
       

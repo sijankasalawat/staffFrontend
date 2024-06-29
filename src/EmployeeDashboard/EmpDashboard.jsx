@@ -80,8 +80,8 @@ const EmpDashboard = ({ userId }) => {
         <AttendanceChart totalPresent={totalPresent} totalAbsent={totalAbsent} />
       )}
   
-      <div className='lg:col-span-2'>
-   
+  <div className='lg:col-span-2'>
+      <AttendanceChart/>  
       </div>
 </div>
         </div>

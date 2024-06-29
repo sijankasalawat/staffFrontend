@@ -4,11 +4,12 @@ import CurrentDate from '../Component/CurrentDate';
 import { useNavigate } from 'react-router-dom';
 
 import DropDown from '../Component/DropDown';
-import Profile from '../profile/Profile.jsx';
+
 import Dashboard from './Dashboard.jsx';
 import AllEmployees from './AllEmployees.jsx';
 import Attendance from './Attendence.jsx';
 import AddEvent from './AddEvent.jsx';
+import Profile from '../profile/Profile.jsx';
 
 const AdminDashboard = () => { 
   const [isSidebarOpen, setSidebarOpen] = useState(false);

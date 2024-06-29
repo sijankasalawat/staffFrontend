@@ -8,6 +8,7 @@ import HrDocument from './HrDocument';
 import DropDown from '../Component/DropDown';
 import Profile from '../profile/Profile.jsx';
 import AttendanceRequest from './AttendanceRequest.jsx';
+import AddDocument from '../Component/AddDocument/AddDocument.jsx';
 
 const HrDashboard = () => { 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -208,7 +209,7 @@ const HrDashboard = () => {
             {activeContainer === 'hrdashboard' && <HrDashboardMain userId={user._id} />}
             {activeContainer === 'attendencecheck' && <AttendenceCheck />}
             {activeContainer === 'attendancerequest' && <AttendanceRequest />}
-            {activeContainer === 'hrdocument' && <HrDocument />}
+            {activeContainer === 'hrdocument' && <AddDocument userId={user._id} />}
             {activeContainer === 'profilesetting' && <Profile  userId={user._id}/>}
        
         </div>

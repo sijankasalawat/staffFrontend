@@ -70,6 +70,17 @@ export const createTicketApi = (formData,userId) =>
     }
   });
 
+  //add Document
+  export const createDocumentApi = (userId, formData) => 
+    Api.post(`api/user/addDocument/${userId}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data' // Ensure correct content type for FormData
+      }
+    });
+
+    //change password api
+  export const changePasswordApi =(userId)=>Api.put(`api/user/changePassword/${userId}`);
+
   export const getTicketsByUserIdApi = (userId) =>
   Api.get(`api/user/getLeaveRequestsByUserId/${userId}`);
 
@@ -77,4 +88,4 @@ export const createTicketApi = (formData,userId) =>
 
   export const updateRequestsApi = (userId) => Api.put(`api/user/leaveRequestUpdate/${userId}`);
 
-  export const forgotPasswordApi = (data) =>Api.post("/api/user/forgot/password", data);
+  export const forgotPasswordApi = (data) =>Api.put("/api/user/forgot/password", data);
