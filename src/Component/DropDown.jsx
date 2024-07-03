@@ -1,14 +1,36 @@
-import { Fragment } from 'react';
+import { Fragment,useEffect, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom'; // Updated to use useNavigate
 import { toast } from 'react-toastify';
 import { logoutUserApi } from '../Apis/Api';
+import { getUserByIdApi } from "../Apis/Api";
+import profilePlaceholder from "../assets/images/id.png";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function DropDown() {
+  const [avatarUrl, setAvatarUrl] = useState(profilePlaceholder);
+  const userId = JSON.parse(localStorage.getItem('user'))._id;
+
+  useEffect(() => {
+    const fetchUserAvatar = async () => {
+      try {
+        const res = await getUserByIdApi(userId);
+        if (res.data && res.data.success && res.data.user.avatar) {
+          setAvatarUrl(res.data.user.avatar);
+        }
+      } catch (err) {
+        console.error("Error fetching user avatar:", err);
+      }
+    };
+
+    if (userId) {
+      fetchUserAvatar();
+    }
+  }, [userId]);
   const navigate = useNavigate(); // Updated to use useNavigate
 
   const handleLogout = async (event) => {
@@ -38,8 +60,11 @@ export default function DropDown() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-inset ring-gray-300 hover:bg-gray-50">
-          <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
-        </Menu.Button>
+        <img
+          src={avatarUrl}
+          alt="User Avatar"
+          className="h-10 w-10 rounded-full object-cover"
+        />        </Menu.Button>
       </div>
 
       <Transition

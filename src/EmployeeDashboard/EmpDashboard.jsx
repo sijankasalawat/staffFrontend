@@ -6,6 +6,7 @@ import AttendanceChart from '../Component/AttendanceChart'
 import TotalPresent from '../Component/TotalPresent'
 import TotalAbsent from '../Component/TotalAbsent'
 import { getTotalAbsentIdApi, getTotalPresentIdApi } from '../Apis/Api'
+import AttendanceBar from '../Component/AttendanceBar'
 
 
 const EmpDashboard = ({ userId }) => {
@@ -81,7 +82,7 @@ const EmpDashboard = ({ userId }) => {
       )}
   
   <div className='lg:col-span-2'>
-      <AttendanceChart/>  
+      <AttendanceBar/>  
       </div>
 </div>
         </div>
