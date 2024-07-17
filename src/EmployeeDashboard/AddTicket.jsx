@@ -248,18 +248,26 @@ const AddTicket = () => {
           </thead>
           <tbody>
             {Array.isArray(tickets) && tickets.length > 0 && tickets.map((ticket,index) => (
-              <tr
-                key={ticket._id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                 <td className="px-4 py-4">{index + 1}</td>
+             <tr
+             key={ticket._id}
+             className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ${
+               ticket.status === 'Approved'
+                 ? 'bg-green-100 dark:bg-green-700 text-green-500'
+                 : ticket.status === 'Pending'
+                 ? 'bg-orange-100 dark:bg-orange-500 text-orange-500'
+                 : ticket.status === 'Rejected'
+                 ? 'bg-red-100 dark:bg-red-600 text-red-500'
+                 : ''
+             }`}
+           >
+                 <td className="px-4 py-4 text-gray-700">{index + 1}</td>
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {ticket.title}
                   {/* {{...ticket}} */}
                 </td>
-                <td className="px-6 py-4">{ticket.reason}</td>
-                <td className="px-6 py-4">{ticket.fromDate}</td>
-                <td className="px-6 py-4">{ticket.toDate}</td>
+                <td className="px-6 py-4 text-gray-700">{ticket.reason}</td>
+                <td className="px-6 py-4 text-gray-700">{ticket.fromDate}</td>
+                <td className="px-6 py-4 text-gray-700">{ticket.toDate}</td>
                 <td className="px-6 py-4">
                   <button
                     onClick={() => openImageModal(ticket.file)}
