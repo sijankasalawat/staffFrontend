@@ -79,13 +79,26 @@ export const createTicketApi = (formData,userId) =>
     });
 
     //change password api
-  export const changePasswordApi =(userId)=>Api.put(`api/user/changePassword/${userId}`);
+  export const changePasswordApi =(userId)=>Api.put(`/api/user/changePassword/${userId}`);
 
   export const getTicketsByUserIdApi = (userId) =>
   Api.get(`api/user/getLeaveRequestsByUserId/${userId}`);
 
   export const getAllRequestsApi = () => Api.get("api/user/getAllLeaveRequests");
 
-  export const updateRequestsApi = (userId) => Api.put(`api/user/leaveRequestUpdate/${userId}`);
+
+  export const updateRequestsApi = (id, data) => Api.put(`api/user/leaveRequestUpdate/${id}`, data);
+
 
   export const forgotPasswordApi = (data) =>Api.put("/api/user/forgot/password", data);
+
+  //project
+  export const createProjectApi = (projectData) => Api.post("api/user/createProject", projectData);
+
+  export const updateProjectStatusApi = (projectId, status) => Api.put(`api/user/updateProjectStatus/${projectId}`, status);
+
+  export const getProjectsByUsernameApi = (username) => Api.get(`api/user/getAllProjectsByUserName/${username}`);
+
+  export const getAllProjectsApi = () => Api.get("api/user/getAllProject");
+  export const deleteProjectApi = (projectId) => Api.delete(`/api/user/deleteProject/${projectId}`);
+

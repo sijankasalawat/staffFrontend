@@ -47,7 +47,7 @@ const Attendence = () => {
 
   return (
     <>
-     <div className="p-4">
+     <div className="p-4 mt-5">
      <div className=" pt-10 mt-3">
       <div>Today's Attendance:</div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg rounded-xl mt-3">

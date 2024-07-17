@@ -80,7 +80,10 @@ const AddEvent = () => {
      <div className=" pt-10 mt-3">
       <div className='text-[#F97316] font-bold text-3xl'>Add Event</div>
       <div className='text-gray-600'>Add Upcoming Events</div>
-      <button className='bg-[#F97316] px-3 p-2 text-white rounded-md mt-3' onClick={() => setOpen(true)}>Add Event</button>
+      <button className='bg-[#F97316] px-3 p-2 text-white rounded-md font-bold mt-3 flex gap-2' onClick={() => setOpen(true)}>Add Event <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
+</svg>
+</button>
       <Transition show={open} as={Fragment}>
         <Dialog className="relative z-10" onClose={() => setOpen(false)}>
           <Transition.Child

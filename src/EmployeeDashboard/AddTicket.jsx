@@ -262,7 +262,7 @@ const AddTicket = () => {
                 <td className="px-6 py-4">{ticket.toDate}</td>
                 <td className="px-6 py-4">
                   <button
-                    onClick={() => openImageModal(ticket.fileUrl)}
+                    onClick={() => openImageModal(ticket.file)}
                     className="text-blue-500"
                   >
                     View File

@@ -4,9 +4,9 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Lege
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-const AttendanceBar = () => {
+const MonthlyAttendance = () => {
   const data = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
         label: 'Present',
@@ -15,7 +15,7 @@ const AttendanceBar = () => {
         borderWidth: 1,
         hoverBackgroundColor: '#36A2EB',
         hoverBorderColor: '#36A2EB',
-        data: [8, 9, 9, 2, 5], // Replace with actual data
+        data: [0, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0], // Replace with actual data for each month
       },
       {
         label: 'Absent',
@@ -24,7 +24,7 @@ const AttendanceBar = () => {
         borderWidth: 1,
         hoverBackgroundColor: '#FF6384',
         hoverBorderColor: '#FF6384',
-        data: [1, 0, 0, 7, 4], // Replace with actual data
+        data: [0, 0, 0, 0, 0, 6, 3, 0, 0, 0, 0, 0], // Replace with actual data for each month
       },
     ],
   };
@@ -38,7 +38,7 @@ const AttendanceBar = () => {
     },
     scales: {
       x: {
-        scale: 'category',
+        type: 'category',
         stacked: true,
       },
       y: {
@@ -50,10 +50,10 @@ const AttendanceBar = () => {
 
   return (
     <div className='border rounded-xl p-5'>
-      <div className='text-xl mb-4'>Weekly Attendance</div>
+      <div className='text-xl mb-4'>Monthly Attendance</div>
       <Bar data={data} options={options} />
     </div>
   );
 };
 
-export default AttendanceBar;
+export default MonthlyAttendance;
