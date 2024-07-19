@@ -6,7 +6,7 @@ import AttendanceChart from '../Component/AttendanceChart'
 import TotalPresent from '../Component/TotalPresent'
 import TotalAbsent from '../Component/TotalAbsent'
 import { getTotalAbsentIdApi, getTotalPresentIdApi } from '../Apis/Api'
-import AttendanceBar from '../Component/AttendanceBar'
+import MonthlyAttendece from '../Component/MonthlyAttendance'
 import TotalProjectByUser from '../Component/TotalProjectByUser'
 
 
@@ -19,6 +19,7 @@ const EmpDashboard = ({ userId }) => {
     if (userId) {
      getTotalPresentIdApi(userId)
         .then(response => {
+          console.log('response: ', response);
           if (response.data.success) {
             setTotalPresent(response.data.totalPresent);
           } else {
@@ -42,9 +43,7 @@ const EmpDashboard = ({ userId }) => {
           console.error('Error fetching total absent days:', err);
           setError('Error fetching total absent days');
         });
-    } else {
-      setError('Invalid user ID');
-    }
+    } 
   }, [userId]);
   return (
 <>
@@ -71,7 +70,7 @@ const EmpDashboard = ({ userId }) => {
       )}
   
   <div className='lg:col-span-2'>
-      <AttendanceBar/>  
+      <MonthlyAttendece userId={userId}/> 
       </div>
 </div>
         </div>

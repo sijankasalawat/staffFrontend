@@ -102,3 +102,4 @@ export const createTicketApi = (formData,userId) =>
   export const getAllProjectsApi = () => Api.get("api/user/getAllProject");
   export const deleteProjectApi = (projectId) => Api.delete(`/api/user/deleteProject/${projectId}`);
 
+export const getUserAttendanceApi = (userId='') => Api.get(!userId ? `api/user/attendanceRecords`:`api/user/attendanceRecord/${userId}`)

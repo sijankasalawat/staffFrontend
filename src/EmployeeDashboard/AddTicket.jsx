@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { ShieldExclamationIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { toast } from 'react-toastify';
 import { createTicketApi, getTicketsByUserIdApi } from '../Apis/Api';
+import ReactLoading from "react-loading"
 
 const AddTicket = () => {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,7 @@ const AddTicket = () => {
   const [tickets, setTickets] = useState([]);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [imageModalSrc, setImageModalSrc] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const userId = JSON.parse(localStorage.getItem('user'))._id;
 
@@ -62,6 +64,7 @@ const AddTicket = () => {
     formData.append('file', productImage);
 
     try {
+      setLoading(true);
       const res = await createTicketApi(formData, userId);
       if (res.data && res.data.success) {
         setOpen(false);
@@ -80,6 +83,8 @@ const AddTicket = () => {
     } catch (error) {
       console.error('API error:', error);
       toast.error('An error occurred while creating the leave request.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -140,8 +145,12 @@ const AddTicket = () => {
                           </Dialog.Title>
                         </div>
                       </div>
+                      {
+                        loading ? <div className="text-center mt-4 h-[350px] flex justify-center items-center">
+                          <ReactLoading type="spin" color="#F97316" height={100} width={100} />
+                          </div>:
                       <div className="mt-2">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} >
                           <label>Title</label>
                           <input
                             onChange={(e) => setTitle(e.target.value)}
@@ -182,6 +191,7 @@ const AddTicket = () => {
                           />
                           <input
                             type="file"
+                            accept="image/*"
                             onChange={handleImage}
                             className="mt-3 block w-full text-gray-500 font-medium text-sm bg-gray-100 border-0 py-2 px-4 rounded cursor-pointer bg-gray-800 hover:bg-gray-700 text-white"
                           />
@@ -210,6 +220,8 @@ const AddTicket = () => {
                           </div>
                         </form>
                       </div>
+                      }
+
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>

@@ -41,8 +41,6 @@ const HrDashboardMain = ({ userId }) => {
           console.error('Error fetching total absent days:', err);
           setError('Error fetching total absent days');
         });
-    } else {
-      setError('Invalid user ID');
     }
   }, [userId]);
   return (
@@ -71,7 +69,7 @@ const HrDashboardMain = ({ userId }) => {
   
     
       <div className='lg:col-span-2'>
-      <AttendanceBar/>  
+      <AttendanceBar userId={userId}/>  
       </div>
 </div>
         </div>
